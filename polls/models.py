@@ -75,6 +75,7 @@ class MonthlyTestResult(models.Model):
     date = models.DateField()
     score = models.PositiveIntegerField()
     comment = models.CharField(max_length=255, blank=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='test_result', blank=True, null=True)
 
     def __str__(self):
         return f"{self.student.user.get_full_name()} - {self.date} - {self.score} ball"
@@ -87,6 +88,9 @@ class MonthlyPayment(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     is_paid = models.BooleanField(default=False)
     payment_date = models.DateField(null=True, blank=True)
+    course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f"{self.student.user.get_full_name()} - {self.month} - {'To‘langan' if self.is_paid else 'To‘lanmagan'}"
+
+
