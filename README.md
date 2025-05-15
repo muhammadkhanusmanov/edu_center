@@ -406,7 +406,52 @@ All endpoints require authentication. Use the following methods for authenticati
   - **204 No Content**: Successfully deleted.
   - **404 Not Found**: If the schedule does not exist.
 
-### 21. Student Data Overview
+### 21. Assign Courses to Student
+
+- **URL**: `/api/assign-courses/`
+- **Method**: `POST`
+- **Request Body**:
+  ```json
+  {
+      "student_id": 1,
+      "course_ids": [1, 2, 3]
+  }
+  ```
+- **Response**:
+  - **200 OK**: 
+    ```json
+    {
+        "message": "Courses assigned successfully.",
+        "student": "Student Name",
+        "courses": ["Course 1", "Course 2", "Course 3"]
+    }
+    ```
+  - **400 Bad Request**: Validation errors.
+
+### 22. Modify Student Course
+
+- **URL**: `/api/admin/modify-student-course/`
+- **Method**: `POST`
+- **Request Body**:
+  ```json
+  {
+      "student_id": 1,
+      "course_id": 1,
+      "action": "add"  // or "remove"
+  }
+  ```
+- **Response**:
+  - **200 OK**: 
+    ```json
+    {
+        "message": "Course successfully added.",
+        "student": "Student Name",
+        "current_courses": ["Course 1", "Course 2"]
+    }
+    ```
+  - **400 Bad Request**: Validation errors.
+
+### 23. Student Data Overview
 
 - **URL**: `/api/data/overview/`
 - **Method**: `GET`
