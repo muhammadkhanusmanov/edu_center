@@ -21,7 +21,10 @@ All endpoints require authentication. Use the following methods for authenticati
 - **Method**: `POST`
 - **Request Body**:
   ```json
-  Baic Auth
+  {
+      "username": "your_username",
+      "password": "your_password"
+  }
   ```
 - **Response**:
   - **200 OK**:
